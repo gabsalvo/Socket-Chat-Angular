@@ -1,0 +1,22 @@
+<div *ngIf="!inRoom">
+  <!-- Bottone per creare una nuova stanza -->
+  <button (click)="createRoom()">Create Room</button>
+
+  <!-- Input e bottone per unirsi a una stanza esistente -->
+  <input type="text" [(ngModel)]="roomCode" placeholder="Enter room code" />
+  <button (click)="joinRoom()">Join Room</button>
+
+  <div class="active-rooms">
+    <h3>Available Rooms:</h3>
+    <ul>
+      <li *ngFor="let room of activeRooms">{{ room }}</li>
+    </ul>
+  </div>
+</div>
+
+<!-- Il componente ChatRoom viene mostrato solo se si è in una stanza -->
+<app-chat-room
+  *ngIf="inRoom"
+  [room]="roomCode"
+  (leave)="leaveRoom()"
+></app-chat-room>
