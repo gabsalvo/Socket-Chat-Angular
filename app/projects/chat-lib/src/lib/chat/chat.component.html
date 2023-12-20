@@ -1,22 +1,51 @@
-<div *ngIf="!inRoom">
-  <!-- Bottone per creare una nuova stanza -->
-  <button (click)="createRoom()">Create Room</button>
+<div class="chat-container">
+  <div *ngIf="!inRoom" class="box">
+    <!-- Button to join the global chat room -->
+    <div class="field">
+      <p class="control">
+        <button
+          class="button is-primary is-fullwidth"
+          (click)="joinGlobalChat()"
+        >
+          Join Global Chat
+        </button>
+      </p>
+    </div>
 
-  <!-- Input e bottone per unirsi a una stanza esistente -->
-  <input type="text" [(ngModel)]="roomCode" placeholder="Enter room code" />
-  <button (click)="joinRoom()">Join Room</button>
-
-  <div class="active-rooms">
-    <h3>Available Rooms:</h3>
-    <ul>
-      <li *ngFor="let room of activeRooms">{{ room }}</li>
-    </ul>
+    <!-- Input and button to create/join a named room -->
+    <div class="field has-addons">
+      <p class="control is-expanded">
+        <input
+          class="input"
+          type="text"
+          [(ngModel)]="roomCode"
+          placeholder="Enter room name"
+        />
+      </p>
+      <p class="control">
+        <button
+          class="button is-info"
+          (click)="joinNamedRoom()"
+          [disabled]="!roomCode.trim()"
+        >
+          Create/Join Room
+        </button>
+      </p>
+    </div>
+    <div class="active-rooms">
+      <h3 class="title is-4">Available Rooms:</h3>
+      <ul>
+        <li *ngFor="let room of activeRooms" class="room-list-item">
+          {{ room }}
+        </li>
+      </ul>
+    </div>
   </div>
-</div>
 
-<!-- Il componente ChatRoom viene mostrato solo se si è in una stanza -->
-<app-chat-room
-  *ngIf="inRoom"
-  [room]="roomCode"
-  (leave)="leaveRoom()"
-></app-chat-room>
+  <!-- ChatRoom component shown only if in a room -->
+  <app-chat-room
+    *ngIf="inRoom"
+    [room]="roomCode"
+    (leave)="leaveNamedRoom()"
+  ></app-chat-room>
+</div>

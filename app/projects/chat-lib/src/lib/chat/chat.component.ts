@@ -10,8 +10,20 @@ export class ChatComponent {
   activeRooms: string[] = [];
   roomCode = '';
   inRoom = false;
+  globalRoomId = 'global_chat';
 
   constructor(private chatService: ChatService) {}
+
+  joinGlobalChat(): void {
+    this.roomCode = this.globalRoomId;
+    this.joinRoom();
+  }
+
+  joinNamedRoom(): void {
+    if (this.roomCode.trim()) {
+      this.joinRoom();
+    }
+  }
 
   createRoom(): void {
     this.roomCode = this.chatService.generateRoomCode();
@@ -23,7 +35,7 @@ export class ChatComponent {
     this.chatService.joinRoom(this.roomCode);
     this.inRoom = true;
   }
-  leaveRoom(): void {
+  leaveNamedRoom(): void {
     this.chatService.leaveRoom(this.roomCode);
     this.roomCode = '';
     this.inRoom = false;

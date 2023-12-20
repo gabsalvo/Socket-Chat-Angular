@@ -1,0 +1,31 @@
+.chat-container {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 300px; /* Adjust width as needed */
+  max-height: 400px; /* Adjust height as needed */
+  border: 1px solid #ddd;
+  background-color: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.chat-entry {
+  padding: 10px;
+}
+
+.active-rooms {
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+/* Additional styling */
+.room-list-item {
+  margin-bottom: 0.5em;
+}
+
+/* Adjust the style of the buttons and input if needed */
+.button.is-fullwidth {
+  margin-bottom: 10px; /* Add space between buttons */
+}

@@ -1,8 +1,16 @@
-<div>
-  <input [(ngModel)]="message" placeholder="Type a message" />
-  <button (click)="sendMessage()">Send</button>
+<div class="chat-room">
+  <div class="messages">
+    <div class="message" *ngFor="let msg of messages">{{ msg }}</div>
+  </div>
 
-  <div *ngFor="let msg of messages">{{ msg }}</div>
+  <div class="field has-addons">
+    <div class="control is-expanded">
+      <input class="input" [(ngModel)]="message" placeholder="Type a message" />
+    </div>
+    <div class="control">
+      <button class="button is-info" (click)="sendMessage()">Send</button>
+    </div>
+  </div>
 
-  <button (click)="leaveRoom()">Leave Room</button>
+  <button class="button is-danger" (click)="leaveRoom()">Leave Room</button>
 </div>
