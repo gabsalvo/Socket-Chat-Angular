@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ChatService } from './services/chat.service'; // Aggiusta il percorso in base alla struttura del tuo progetto
+import { ChatService } from 'chat-lib';
 
 @Component({
   selector: 'app-root',
@@ -29,14 +29,14 @@ export class AppComponent {
     this.inRoom = false;
   }
   ngOnInit() {
-    this.chatService.getActiveRoomsUpdates().subscribe((rooms) => {
+    this.chatService.getActiveRoomsUpdates().subscribe((rooms: string[]) => {
       this.activeRooms = rooms;
     });
     this.fetchActiveRooms();
   }
 
   fetchActiveRooms(): void {
-    this.chatService.getActiveRooms().subscribe((rooms) => {
+    this.chatService.getActiveRooms().subscribe((rooms: string[]) => {
       this.activeRooms = rooms;
     });
   }

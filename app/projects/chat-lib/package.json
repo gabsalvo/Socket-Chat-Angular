@@ -1,6 +1,7 @@
 {
-  "name": "chat-lib",
+  "name": "@gabriele-salvo/socket-chat-angular",
   "version": "0.0.1",
+  "description": "A chat library for Angular applications using WebSockets.",
   "peerDependencies": {
     "@angular/common": "^16.2.0",
     "@angular/core": "^16.2.0"
@@ -8,5 +9,27 @@
   "dependencies": {
     "tslib": "^2.3.0"
   },
-  "sideEffects": false
+  "sideEffects": false,
+  "author": {
+    "name": "Gabriele Salvo",
+    "email": "gabriielesalvo@gmail.com",
+    "url": "https://gabsalvo.github.io/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gabsalvo/Socket-Chat-Angular/tree/main/app"
+  },
+  "keywords": [
+    "angular",
+    "chat",
+    "websocket",
+    "real-time",
+    "messaging",
+    "angular-library"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gabsalvo/Socket-Chat-Angular/issues"
+  },
+  "homepage": "https://github.com/gabsalvo/Socket-Chat-Angular/tree/main/app#readme"
 }
