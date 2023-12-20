@@ -2,17 +2,21 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ChatLibModule } from '../../projects/chat-lib/src/lib/chat-lib.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ChatComponent } from './chat/chat.component';
-import { ChatService } from './services/chat.service';
-import { ChatRoomComponent } from './chat-room/chat-room.component';
 
 @NgModule({
-  declarations: [AppComponent, ChatComponent, ChatRoomComponent],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
-  providers: [ChatService],
+  declarations: [AppComponent],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    ChatLibModule,
+  ],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

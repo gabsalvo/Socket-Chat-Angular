@@ -12,6 +12,9 @@
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
     "paths": {
+      "chat-lib": [
+        "dist/chat-lib"
+      ],
       "my-chat": [
         "dist/my-chat"
       ]
