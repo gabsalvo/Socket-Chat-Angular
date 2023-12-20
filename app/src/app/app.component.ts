@@ -10,7 +10,7 @@ export class AppComponent {
   activeRooms: string[] = [];
   roomCode = '';
   inRoom = false;
-  username = 'gab';
+  username: string = 'gab';
 
   constructor(private chatService: ChatService) {}
 

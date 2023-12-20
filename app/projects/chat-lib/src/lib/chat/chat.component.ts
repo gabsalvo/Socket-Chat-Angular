@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ChatService } from '../services/chat.service';
 
 @Component({
@@ -11,6 +11,7 @@ export class ChatComponent {
   roomCode = '';
   inRoom = false;
   globalRoomId = 'global_chat';
+  @Input() username: string | null = null;
 
   constructor(private chatService: ChatService) {}
 
@@ -32,7 +33,7 @@ export class ChatComponent {
   }
 
   joinRoom(): void {
-    this.chatService.joinRoom(this.roomCode);
+    this.chatService.joinRoom(this.roomCode, this.username);
     this.inRoom = true;
   }
   leaveNamedRoom(): void {

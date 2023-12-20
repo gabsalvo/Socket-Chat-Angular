@@ -18,10 +18,10 @@ export class ChatService {
     this.socket.emit('sendMessage', message);
   }
 
-  public getMessages(): Observable<string> {
+  public getMessages(): Observable<{ username: string; message: string }> {
     return new Observable((observer) => {
-      this.socket.on('message', (message) => {
-        observer.next(message);
+      this.socket.on('message', (data) => {
+        observer.next(data);
       });
     });
   }
