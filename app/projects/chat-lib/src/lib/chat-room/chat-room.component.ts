@@ -26,12 +26,12 @@ export class ChatRoomComponent implements OnInit {
   }
 
   joinRoom(): void {
-    this.chatService.joinRoom(this.room, this.username);
+    this.chatService.joinRoom(this.room, this.username || 'default');
     this.inRoom = true;
   }
   leaveRoom(): void {
     console.log(`Leaving room: ${this.room}`);
-    this.chatService.leaveRoom(this.room, this.username);
+    this.chatService.leaveRoom(this.room, this.username || 'default');
     this.inRoom = false;
     this.leave.emit();
   }

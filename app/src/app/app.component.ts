@@ -21,11 +21,11 @@ export class AppComponent {
   }
 
   joinRoom(): void {
-    this.chatService.joinRoom(this.roomCode);
+    this.chatService.joinRoom(this.roomCode, this.username);
     this.inRoom = true;
   }
   leaveRoom(): void {
-    this.chatService.leaveRoom(this.roomCode);
+    this.chatService.leaveRoom(this.roomCode, this.username);
     this.roomCode = '';
     this.inRoom = false;
   }
