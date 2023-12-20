@@ -1,15 +1,36 @@
 /* chat-wrapper.component.css */
+
 .chat-wrapper {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  /* Altri stili come necessario */
+  z-index: 1000; /* Ensure it's above other content */
 }
 
 .chat-icon {
-  /* Stili per l'icona della chat */
+  width: 50px; /* Adjust as needed */
+  height: 50px; /* Adjust as needed */
+  background-color: #007bff; /* Example color */
+  border-radius: 50%; /* Circular shape */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Optional shadow */
 }
 
 .close-chat-btn {
-  /* Stili per il bottone di chiusura */
+  position: absolute;
+  bottom: 10px;
+  right: 0;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 24px; /* Adjust size as needed */
+  line-height: 1;
+  padding: 10px;
+  z-index: 1010;
+}
+.custom {
+  color: #ffff;
 }
