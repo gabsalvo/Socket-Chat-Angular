@@ -8,6 +8,7 @@ import { ChatService } from '../services/chat.service';
 })
 export class ChatRoomComponent implements OnInit {
   @Input() room: string = '';
+  @Input() username: string | null = null;
   message: string = '';
   messages: string[] = [];
   inRoom: boolean = false;

@@ -26,16 +26,20 @@ export class ChatService {
     });
   }
 
-  public joinRoom(room: string): void {
-    this.socket.emit('joinRoom', { room });
+  public joinRoom(room: string, username: string): void {
+    this.socket.emit('joinRoom', { room, username });
   }
 
-  public leaveRoom(room: string): void {
-    this.socket.emit('leaveRoom', { room });
+  public leaveRoom(room: string, username: string): void {
+    this.socket.emit('leaveRoom', { room, username });
   }
 
-  public sendMessageToRoom(room: string, message: string): void {
-    this.socket.emit('sendMessage', { room, message });
+  public sendMessageToRoom(
+    room: string,
+    message: string,
+    username: string,
+  ): void {
+    this.socket.emit('sendMessage', { room, message, username });
   }
   public generateRoomCode(): string {
     return Math.random().toString(36).substring(2, 9);

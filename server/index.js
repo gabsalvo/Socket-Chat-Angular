@@ -25,7 +25,7 @@ io.on("connection", (socket) => {
   };
 
   // Join a room
-  socket.on("joinRoom", ({ room }) => {
+  socket.on("joinRoom", ({ room, username }) => {
     if (!rooms[room]) {
       rooms[room] = [];
       activeRooms[room] = true;
@@ -33,10 +33,14 @@ io.on("connection", (socket) => {
     rooms[room].push(socket.id);
     socket.join(room);
     updateActiveRooms();
+    socket.to(room).emit("message", {
+      username,
+      message: `User ${username} has joined the room.`,
+    });
   });
 
   // Leave the room
-  socket.on("leaveRoom", ({ room }) => {
+  socket.on("leaveRoom", ({ room, username }) => {
     console.log(`User leaving room: ${room}`);
     if (rooms[room]) {
       rooms[room] = rooms[room].filter((id) => id !== socket.id);
@@ -47,11 +51,17 @@ io.on("connection", (socket) => {
     }
     socket.leave(room);
     updateActiveRooms();
+    socket
+      .to(room)
+      .emit("message", {
+        username,
+        message: `User ${username} has left the room.`,
+      });
   });
 
   // Send message to specific room
-  socket.on("sendMessage", ({ room, message }) => {
-    io.to(room).emit("message", { message, room });
+  socket.on("sendMessage", ({ room, message, username }) => {
+    io.to(room).emit("message", { username, message, room });
   });
 
   socket.on("disconnect", () => {

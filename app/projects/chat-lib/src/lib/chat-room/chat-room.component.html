@@ -1,6 +1,8 @@
 <div class="chat-room">
   <div class="messages">
-    <div class="message" *ngFor="let msg of messages">{{ msg }}</div>
+    <div class="message" *ngFor="let msg of messages">
+      <strong>{{ msg.username }}:</strong> {{ msg.message }}
+    </div>
   </div>
 
   <div class="field has-addons">
