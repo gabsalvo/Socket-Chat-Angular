@@ -46,6 +46,7 @@
   <app-chat-room
     *ngIf="inRoom"
     [room]="roomCode"
+    [username]="username"
     (leave)="leaveNamedRoom()"
   ></app-chat-room>
 </div>

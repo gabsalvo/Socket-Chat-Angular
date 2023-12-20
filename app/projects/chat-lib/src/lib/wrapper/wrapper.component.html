@@ -1,0 +1,11 @@
+<!-- chat-wrapper.component.html -->
+<div class="chat-wrapper">
+  <div *ngIf="!chatOpen" class="chat-icon" (click)="toggleChat()">
+    <!-- Icona della chat -->
+  </div>
+
+  <div *ngIf="chatOpen">
+    <app-chat [username]="username"></app-chat>
+    <button class="close-chat-btn" (click)="toggleChat()">Chiudi Chat</button>
+  </div>
+</div>

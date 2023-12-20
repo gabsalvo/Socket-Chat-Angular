@@ -11,7 +11,7 @@ export class ChatComponent {
   roomCode = '';
   inRoom = false;
   globalRoomId = 'global_chat';
-  @Input() username: string | null = null;
+  @Input() username: string | null = 'default';
 
   constructor(private chatService: ChatService) {}
 
@@ -33,15 +33,21 @@ export class ChatComponent {
   }
 
   joinRoom(): void {
-    this.chatService.joinRoom(this.roomCode, this.username);
-    this.inRoom = true;
+    if (this.username != null) {
+      this.chatService.joinRoom(this.roomCode, this.username);
+      this.inRoom = true;
+    }
   }
+
   leaveNamedRoom(): void {
-    this.chatService.leaveRoom(this.roomCode);
-    this.roomCode = '';
-    this.inRoom = false;
+    if (this.username != null) {
+      this.chatService.leaveRoom(this.roomCode, this.username);
+      this.roomCode = '';
+      this.inRoom = false;
+    }
   }
   ngOnInit() {
+    console.log('Username in ChatComponent:', this.username);
     this.chatService.getActiveRoomsUpdates().subscribe((rooms) => {
       this.activeRooms = rooms;
     });

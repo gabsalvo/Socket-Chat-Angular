@@ -26,11 +26,11 @@ export class ChatService {
     });
   }
 
-  public joinRoom(room: string, username: string): void {
+  public joinRoom(room: string, username: string | null): void {
     this.socket.emit('joinRoom', { room, username });
   }
 
-  public leaveRoom(room: string, username: string): void {
+  public leaveRoom(room: string, username: string | null): void {
     this.socket.emit('leaveRoom', { room, username });
   }
 

@@ -1,0 +1,15 @@
+/* chat-wrapper.component.css */
+.chat-wrapper {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  /* Altri stili come necessario */
+}
+
+.chat-icon {
+  /* Stili per l'icona della chat */
+}
+
+.close-chat-btn {
+  /* Stili per il bottone di chiusura */
+}

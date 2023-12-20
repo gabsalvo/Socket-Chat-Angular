@@ -6,9 +6,10 @@ import { ChatLibModule } from '../../projects/chat-lib/src/lib/chat-lib.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { WrapperComponent } from './wrapper/wrapper.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, WrapperComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
