@@ -8,11 +8,11 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ChatService {
   private socket: Socket;
-  private baseUrl = 'http://localhost:3000';
+  private baseUrl = 'http://localhost:3001';
 
   constructor(private http: HttpClient) {
     const room = localStorage.getItem('chatRoom');
-    this.socket = io('http://localhost:3000');
+    this.socket = io('http://localhost:3001');
   }
 
   public getGlobalMessages(): Observable<any[]> {

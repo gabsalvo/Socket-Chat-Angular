@@ -9,10 +9,11 @@ const io = socketIO(server, {
   cors: {
     origin: "*",
     methods: ["GET", "POST"],
+    allowedHeaders: ["Content-Type", "ngrok-skip-browser-warning"],
   },
 });
 
-app.use(cors()); // Abilita CORS per tutte le rotte
+app.use(cors());
 
 let rooms = {};
 let activeRooms = {};
@@ -100,5 +101,5 @@ app.get("/global-messages", (req, res) => {
   res.json(globalMessages);
 });
 
-const PORT = process.env.PORT || 3000;
+const PORT = 3001;
 server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
