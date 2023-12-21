@@ -92,6 +92,10 @@ io.on("connection", (socket) => {
   });
 });
 
+app.get("/", (req, res) => {
+  res.send("You shall not be here");
+});
+
 app.get("/active-rooms", (req, res) => {
   res.json(Object.keys(activeRooms));
 });
