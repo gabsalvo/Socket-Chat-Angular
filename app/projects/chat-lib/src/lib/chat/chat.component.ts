@@ -10,14 +10,24 @@ export class ChatComponent {
   activeRooms: string[] = [];
   roomCode = '';
   inRoom = false;
-  globalRoomId = 'global_chat';
+  globalRoomId = 'Global Chat';
   @Input() username: string | null = 'default';
+  globalMessages: { username: string; message: string }[] = [];
 
   constructor(private chatService: ChatService) {}
 
   joinGlobalChat(): void {
     this.roomCode = this.globalRoomId;
     this.joinRoom();
+    this.fetchGlobalMessages();
+  }
+
+  fetchGlobalMessages(): void {
+    if (this.roomCode === this.globalRoomId) {
+      this.chatService.getGlobalMessages().subscribe((messages) => {
+        this.globalMessages = messages; // Salva i messaggi nella proprietà
+      });
+    }
   }
 
   joinNamedRoom(): void {

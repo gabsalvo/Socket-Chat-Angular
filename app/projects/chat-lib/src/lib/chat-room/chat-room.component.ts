@@ -17,11 +17,19 @@ export class ChatRoomComponent implements OnInit {
   constructor(private chatService: ChatService) {}
 
   ngOnInit(): void {
-    console.log('Username in ChatRoomComponent:', this.username);
+    if (this.room === 'Global Chat') {
+      this.fetchGlobalMessages();
+    }
     this.chatService.getMessages().subscribe((data: any) => {
       if (data.room === this.room) {
         this.messages.push(data);
       }
+    });
+  }
+
+  fetchGlobalMessages(): void {
+    this.chatService.getGlobalMessages().subscribe((messages) => {
+      this.messages = messages.filter((msg) => msg.room === 'Global Chat');
     });
   }
 

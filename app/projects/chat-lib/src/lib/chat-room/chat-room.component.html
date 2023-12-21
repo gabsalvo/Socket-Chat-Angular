@@ -1,4 +1,7 @@
 <div class="chat-room">
+  <h3 class="title is-5 has-background-primary has-text-white p-3">
+    {{ room }}
+  </h3>
   <div class="messages">
     <div class="message" *ngFor="let msg of messages">
       <strong>{{ msg.username }}:</strong> {{ msg.message }}
