@@ -1,26 +1,22 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { io, Socket } from 'socket.io-client';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ChatService {
   private socket: Socket;
-  private baseUrl = 'https://0e9b-93-35-217-254.ngrok-free.app';
+  private baseUrl = 'http://localhost:3000';
 
   constructor(private http: HttpClient) {
     const room = localStorage.getItem('chatRoom');
-    this.socket = io('https://0e9b-93-35-217-254.ngrok-free.app');
+    this.socket = io('http://localhost:3000');
   }
 
   public getGlobalMessages(): Observable<any[]> {
-    const headers = new HttpHeaders({ 'ngrok-skip-browser-warning': 'true' });
-    return this.http.get<any[]>(
-      'https://0e9b-93-35-217-254.ngrok-free.app/global-messages',
-      { headers: headers },
-    );
+    return this.http.get<any[]>(`${this.baseUrl}/global-messages`);
   }
 
   public sendMessage(message: string): void {
@@ -55,11 +51,7 @@ export class ChatService {
   }
 
   public getActiveRooms(): Observable<string[]> {
-    const headers = new HttpHeaders({ 'ngrok-skip-browser-warning': 'true' });
-    return this.http.get<string[]>(
-      'https://0e9b-93-35-217-254.ngrok-free.app/active-rooms',
-      { headers: headers },
-    );
+    return this.http.get<string[]>('http://localhost:3000/active-rooms');
   }
 
   public getActiveRoomsUpdates(): Observable<string[]> {
