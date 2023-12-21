@@ -9,3 +9,5 @@
 **To start the server**:
 
 `cd server/ && node index.js`
+
+You can find the library on [npm](https://www.npmjs.com/package/@gabriele-salvo/socket-chat-angular)
