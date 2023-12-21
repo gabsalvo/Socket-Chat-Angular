@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@gabriele-salvo/socket-chat-angular": "^1.0.2"
+  }
+}
