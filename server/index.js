@@ -16,6 +16,16 @@ app.use(cors()); // Abilita CORS per tutte le rotte
 
 let rooms = {};
 let activeRooms = {};
+let globalMessages = [];
+
+const clearOldMessages = () => {
+  const oneHourAgo = Date.now() - 3600000;
+  globalMessages = globalMessages.filter(
+    (message) => message.timestamp > oneHourAgo,
+  );
+};
+
+setInterval(clearOldMessages, 600000);
 
 io.on("connection", (socket) => {
   console.log("New client connected");
@@ -51,17 +61,20 @@ io.on("connection", (socket) => {
     }
     socket.leave(room);
     updateActiveRooms();
-    socket
-      .to(room)
-      .emit("message", {
-        username,
-        message: `User ${username} has left the room.`,
-      });
+    socket.to(room).emit("message", {
+      username,
+      message: `User ${username} has left the room.`,
+    });
   });
 
   // Send message to specific room
   socket.on("sendMessage", ({ room, message, username }) => {
-    io.to(room).emit("message", { username, message, room });
+    const messageData = { username, message, room, timestamp: Date.now() };
+
+    if (room === "Global Chat") {
+      globalMessages.push(messageData);
+    }
+    io.to(room).emit("message", messageData);
   });
 
   socket.on("disconnect", () => {
@@ -80,6 +93,11 @@ io.on("connection", (socket) => {
 
 app.get("/active-rooms", (req, res) => {
   res.json(Object.keys(activeRooms));
+});
+
+app.get("/global-messages", (req, res) => {
+  clearOldMessages();
+  res.json(globalMessages);
 });
 
 const PORT = process.env.PORT || 3000;
