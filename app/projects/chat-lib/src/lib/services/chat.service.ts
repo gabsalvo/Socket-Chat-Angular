@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { io, Socket } from 'socket.io-client';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +16,11 @@ export class ChatService {
   }
 
   public getGlobalMessages(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.baseUrl}/global-messages`);
+    const headers = new HttpHeaders({ 'ngrok-skip-browser-warning': 'true' });
+    return this.http.get<any[]>(
+      'https://0e9b-93-35-217-254.ngrok-free.app/global-messages',
+      { headers: headers },
+    );
   }
 
   public sendMessage(message: string): void {
@@ -51,7 +55,11 @@ export class ChatService {
   }
 
   public getActiveRooms(): Observable<string[]> {
-    return this.http.get<string[]>(`${this.baseUrl}/active-rooms`);
+    const headers = new HttpHeaders({ 'ngrok-skip-browser-warning': 'true' });
+    return this.http.get<string[]>(
+      'https://0e9b-93-35-217-254.ngrok-free.app/active-rooms',
+      { headers: headers },
+    );
   }
 
   public getActiveRoomsUpdates(): Observable<string[]> {

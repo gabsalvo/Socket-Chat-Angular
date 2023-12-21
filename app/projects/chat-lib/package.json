@@ -1,6 +1,6 @@
 {
   "name": "@gabriele-salvo/socket-chat-angular",
-  "version": "1.0.3",
+  "version": "1.2.0",
   "description": "A chat library for Angular applications using WebSockets.",
   "peerDependencies": {
     "@angular/common": "^16.2.0",
