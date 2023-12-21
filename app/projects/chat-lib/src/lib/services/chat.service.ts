@@ -51,7 +51,7 @@ export class ChatService {
   }
 
   public getActiveRooms(): Observable<string[]> {
-    return this.http.get<string[]>('http://localhost:3000/active-rooms');
+    return this.http.get<string[]>(`${this.baseUrl}/active-rooms`);
   }
 
   public getActiveRoomsUpdates(): Observable<string[]> {
