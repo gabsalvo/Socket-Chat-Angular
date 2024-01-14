@@ -6,7 +6,7 @@
 
 `cd app/ && ng serve`
 
-**To start the server**:
+**To start the server on your local machine (required to use the chat feature online)**:
 
 `cd server/ && node index.js`
 
